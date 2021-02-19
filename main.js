@@ -147,9 +147,28 @@ businesses.forEach(business => {
     outEl.innerHTML += "<hr/>"
 });
 
+const bsEl = document.querySelector("#bigSpenders")
+bsEl.innerHTML = "<h2>Big Spenders</h2>"
+businesses.filter(business => {
+  let bsOrders = Object.values(business.orders)
+  if( bsOrders >= 9000) {
+    bsEl.innerHTML += `<h2>${business.companyName} ($${bsOrders})</h2>
+      <section>
+          ${business.addressFullStreet}
+      </section>
+      <section>
+          ${business.addressCity},
+          ${business.addressStateCode}
+          ${business.addressZipCode}
+      </section>`;
+    bsEl.innerHTML += "<hr/>"  
+  }
+    
+  });
+
 const nyEl = document.querySelector('#nyBusinesses')
 nyEl.innerHTML = `<h2>New York Businesses</h2>`;
-  businesses.filter(business => {
+businesses.filter(business => {
   if (business.addressStateCode === "NY") {
       nyEl.innerHTML += `<h2>${business.companyName}</h2>
       <section>
@@ -168,7 +187,7 @@ nyEl.innerHTML = `<h2>New York Businesses</h2>`;
 
 const mbEl = document.querySelector('#manufacturingBusinesses')
 mbEl.innerHTML = `<h2>Manufacturing Businesses</h2>`;
-  businesses.filter(business => {
+businesses.filter(business => {
   if (business.companyIndustry === "Manufacturing") {
       mbEl.innerHTML += `<h2>${business.companyName}</h2>
       <section>
