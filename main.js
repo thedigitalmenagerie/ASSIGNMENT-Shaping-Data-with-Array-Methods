@@ -115,9 +115,10 @@ document
   .querySelector("#companySearch")
   .addEventListener("keypress", keyPressEvent => {
     if (keyPressEvent.charCode === 13) {
-      const foundBusiness = businesses.find( businesses => {
-      businesses.companyName.includes(keyPressEvent.target.value);
-      });
+      const foundBusiness = businesses.find( 
+        business => 
+      business.companyName.includes(keyPressEvent.target.value)
+      );
       outEl.innerHTML = `<h2>${foundBusiness.companyName}</h2>
       <section>
       ${foundBusinesses.addressFullStreet}
